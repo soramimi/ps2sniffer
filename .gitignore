@@ -1,0 +1,9 @@
+*.hex
+.dep/
+*.lst
+*.map
+*.eep
+*.user
+*.o
+*.elf
+.vscode/

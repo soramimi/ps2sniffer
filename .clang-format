@@ -1,0 +1,9 @@
+---
+BasedOnStyle: 'WebKit'
+TabWidth: 4
+UseTab: Always
+ColumnLimit: 0
+PointerAlignment: Right
+AllowShortIfStatementsOnASingleLine: true
+BreakConstructorInitializersBeforeComma: true
+
