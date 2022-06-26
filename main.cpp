@@ -91,7 +91,7 @@ void usb_poll_tx()
 {
 	uint8_t tmp[TX_EP_SIZE];
 	while (1) {
-		int n = data_tx_buffer_n;
+		uint8_t n = data_tx_buffer_n;
 		n = n < sizeof(tmp) ? n : sizeof(tmp);
 		if (n == 0) break;
 		for (uint8_t i = 0; i < data_tx_buffer_n; i++) {
@@ -148,14 +148,12 @@ static inline uint8_t usb_read_byte()
 
 void usb_write_byte(char c)
 {
-//	return;
-
 	while (1) {
 		if (data_tx_buffer_n < sizeof(data_tx_buffer)) {
 			int8_t i = (data_tx_buffer_i + data_tx_buffer_n) % sizeof(data_tx_buffer);
 			data_tx_buffer[i] = c;
 			data_tx_buffer_n++;
-			if (data_tx_buffer_n >= TX_EP_SIZE) {
+			if (data_tx_buffer_n >= TX_EP_SIZE - 1) {
 				usb_poll_tx();
 			}
 			return;
